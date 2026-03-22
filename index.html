@@ -72,6 +72,15 @@
     .league-pills { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
     .league-pill { background: #111; border: 1px solid #2A2A2A; border-radius: 100px; padding: 10px 22px; font-size: 14px; color: #777; }
 
+    /* SCREENSHOTS */
+    .screenshots-section { text-align: center; padding: 70px 24px; }
+    .screenshots-section h2 { font-size: clamp(24px, 4vw, 40px); font-weight: 900; color: #fff; margin-bottom: 12px; }
+    .screenshots-section p { font-size: 16px; color: #555; margin-bottom: 48px; }
+    .screenshots-row { display: flex; gap: 24px; justify-content: center; align-items: flex-start; flex-wrap: wrap; }
+    .screenshot-item { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+    .screenshot-item img { width: 220px; border-radius: 24px; border: 1px solid #222; box-shadow: 0 20px 60px rgba(0,0,0,0.6); }
+    .screenshot-item span { font-size: 13px; color: #444; }
+
     /* FOOTER */
     footer { text-align: center; padding: 48px 24px; border-top: 1px solid #141414; }
     footer a { color: #444; text-decoration: none; margin: 0 14px; font-size: 13px; transition: color 0.2s; }
@@ -187,6 +196,26 @@
     <div class="cards-visual">
       <div class="card-chip card-yellow">🟨</div>
       <div class="card-chip card-red">🟥</div>
+    </div>
+  </div>
+</section>
+
+<!-- SCREENSHOTS -->
+<section class="screenshots-section">
+  <h2>See it in action</h2>
+  <p>Clean, fast, and built for players.</p>
+  <div class="screenshots-row">
+    <div class="screenshot-item">
+      <img src="DDFDF44B-7FFF-4DF7-ACAA-4404EF077085.png" alt="Home screen with Team of the Week" />
+      <span>Home & Team of the Week</span>
+    </div>
+    <div class="screenshot-item">
+      <img src="IMG_6423.PNG" alt="Build a Game screen" />
+      <span>Build a Game</span>
+    </div>
+    <div class="screenshot-item">
+      <img src="IMG_6424.PNG" alt="Game settings screen" />
+      <span>Game Settings</span>
     </div>
   </div>
 </section>
