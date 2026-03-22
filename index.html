@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NowBall — Find Your Game. Play Now.</title>
-  <link rel="icon" type="image/png" href="logo.png" />
+  <link rel="icon" type="image/png" href="favicon.png" />
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0A0A0A; color: #E8E8E8; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0A0A0A; color: #E8E8E8; overflow-x: hidden; }
 
     /* NAV */
     nav { background: #111; padding: 16px 40px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #1E1E1E; }
@@ -16,56 +16,74 @@
     nav a { color: #777; text-decoration: none; font-size: 14px; transition: color 0.2s; }
     nav a:hover { color: #00E676; }
 
+    /* FLOATING BALLS */
+    .balls-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden; }
+    .ball { position: absolute; opacity: 0.07; animation: floatBall linear infinite; }
+    .ball svg { display: block; }
+    @keyframes floatBall {
+      0%   { transform: translateY(110vh) rotate(0deg); opacity: 0; }
+      10%  { opacity: 0.07; }
+      90%  { opacity: 0.07; }
+      100% { transform: translateY(-20vh) rotate(360deg); opacity: 0; }
+    }
+
+    /* SCROLL REVEAL */
+    .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
     /* HERO */
-    .hero { text-align: center; padding: 100px 24px 70px; }
+    .hero { position: relative; text-align: center; padding: 100px 24px 70px; z-index: 1; }
     .hero h1 { font-size: clamp(36px, 6vw, 68px); font-weight: 900; color: #fff; margin-bottom: 20px; line-height: 1.1; }
     .hero h1 span { color: #00E676; }
     .hero p { font-size: 18px; color: #777; max-width: 500px; margin: 0 auto 48px; line-height: 1.7; }
     .badges { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
     .badge { background: #141414; border: 1px solid #2A2A2A; border-radius: 14px; padding: 14px 28px; font-size: 15px; font-weight: 600; color: #bbb; }
 
+    /* SCREENSHOTS */
+    .screenshots-section { position: relative; z-index: 1; padding: 40px 24px 60px; }
+    .screenshots-row { display: flex; gap: 24px; justify-content: center; align-items: flex-start; flex-wrap: wrap; }
+    .screenshot-item { display: flex; flex-direction: column; align-items: center; }
+    .screenshot-item img { width: 200px; border-radius: 24px; border: 1px solid #222; box-shadow: 0 20px 60px rgba(0,0,0,0.7); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .screenshot-item img:hover { transform: translateY(-6px); box-shadow: 0 30px 80px rgba(0,230,118,0.15); }
+    .screenshot-item.center img { width: 230px; margin-top: -20px; border-color: #00E67640; }
+
     /* SECTION TITLE */
-    .section-title { text-align: center; padding: 70px 24px 40px; }
+    .section-title { position: relative; z-index: 1; text-align: center; padding: 70px 24px 40px; }
     .section-title h2 { font-size: clamp(24px, 4vw, 40px); font-weight: 900; color: #fff; margin-bottom: 12px; }
     .section-title p { font-size: 16px; color: #666; max-width: 440px; margin: 0 auto; }
 
-    /* FEATURES GRID — always 2 columns, centered */
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 0 24px 70px;
-    }
-    .feature { background: #111; border: 1px solid #1E1E1E; border-radius: 18px; padding: 32px; transition: border-color 0.2s; }
-    .feature:hover { border-color: #00E676; }
+    /* FEATURES GRID */
+    .features-grid { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 860px; margin: 0 auto; padding: 0 24px 70px; }
+    .feature { background: #111; border: 1px solid #1E1E1E; border-radius: 18px; padding: 32px; transition: border-color 0.3s, transform 0.3s; }
+    .feature:hover { border-color: #00E676; transform: translateY(-4px); }
     .feature .icon { font-size: 38px; margin-bottom: 14px; }
     .feature h3 { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 8px; }
     .feature p { font-size: 14px; color: #555; line-height: 1.7; }
 
-    /* AWARDS SECTION */
-    .awards-section { background: #0D0D0D; border-top: 1px solid #1A1A1A; border-bottom: 1px solid #1A1A1A; padding: 70px 24px; }
+    /* AWARDS */
+    .awards-section { position: relative; z-index: 1; background: #0D0D0D; border-top: 1px solid #1A1A1A; border-bottom: 1px solid #1A1A1A; padding: 70px 24px; }
     .awards-inner { max-width: 860px; margin: 0 auto; }
     .awards-inner h2 { font-size: clamp(24px, 4vw, 40px); font-weight: 900; color: #fff; text-align: center; margin-bottom: 12px; }
     .awards-inner .sub { font-size: 16px; color: #555; text-align: center; margin-bottom: 48px; }
     .awards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .award-card { background: #111; border: 1px solid #1E1E1E; border-radius: 16px; padding: 28px 24px; text-align: center; }
+    .award-card { background: #111; border: 1px solid #1E1E1E; border-radius: 16px; padding: 28px 24px; text-align: center; transition: border-color 0.3s, transform 0.3s; }
+    .award-card:hover { border-color: #00E67660; transform: translateY(-4px); }
     .award-card .award-icon { font-size: 34px; margin-bottom: 12px; }
     .award-card h4 { font-size: 15px; font-weight: 800; color: #fff; margin-bottom: 6px; }
     .award-card p { font-size: 13px; color: #555; line-height: 1.6; }
 
-    /* CARDS SECTION */
-    .cards-section { max-width: 860px; margin: 0 auto; padding: 70px 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; }
+    /* CARDS */
+    .cards-section { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; padding: 70px 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; }
     .cards-text h2 { font-size: clamp(24px, 4vw, 36px); font-weight: 900; color: #fff; margin-bottom: 16px; }
     .cards-text p { font-size: 15px; color: #666; line-height: 1.8; }
     .cards-visual { display: flex; gap: 16px; justify-content: center; }
-    .card-chip { border-radius: 10px; padding: 20px 28px; font-size: 32px; display: flex; align-items: center; justify-content: center; }
+    .card-chip { border-radius: 10px; padding: 20px 28px; font-size: 32px; display: flex; align-items: center; justify-content: center; transition: transform 0.3s; }
+    .card-chip:hover { transform: scale(1.08); }
     .card-yellow { background: #FFD600; }
     .card-red { background: #F44336; }
 
-    /* COMING SOON — LEAGUES */
-    .leagues-teaser { text-align: center; padding: 80px 24px; background: linear-gradient(180deg, #0A0A0A 0%, #0E1A12 100%); border-top: 1px solid #1A1A1A; }
+    /* COMING SOON */
+    .leagues-teaser { position: relative; z-index: 1; text-align: center; padding: 80px 24px; background: linear-gradient(180deg, #0A0A0A 0%, #0E1A12 100%); border-top: 1px solid #1A1A1A; }
     .leagues-teaser .soon-label { display: inline-block; background: #00E67620; border: 1px solid #00E67640; color: #00E676; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; border-radius: 100px; padding: 6px 16px; margin-bottom: 24px; }
     .leagues-teaser h2 { font-size: clamp(28px, 5vw, 52px); font-weight: 900; color: #fff; margin-bottom: 16px; }
     .leagues-teaser h2 span { color: #00E676; }
@@ -73,17 +91,8 @@
     .league-pills { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
     .league-pill { background: #111; border: 1px solid #2A2A2A; border-radius: 100px; padding: 10px 22px; font-size: 14px; color: #777; }
 
-    /* SCREENSHOTS */
-    .screenshots-section { text-align: center; padding: 70px 24px; }
-    .screenshots-section h2 { font-size: clamp(24px, 4vw, 40px); font-weight: 900; color: #fff; margin-bottom: 12px; }
-    .screenshots-section p { font-size: 16px; color: #555; margin-bottom: 48px; }
-    .screenshots-row { display: flex; gap: 24px; justify-content: center; align-items: flex-start; flex-wrap: wrap; }
-    .screenshot-item { display: flex; flex-direction: column; align-items: center; gap: 12px; }
-    .screenshot-item img { width: 220px; border-radius: 24px; border: 1px solid #222; box-shadow: 0 20px 60px rgba(0,0,0,0.6); }
-    .screenshot-item span { font-size: 13px; color: #444; }
-
     /* FOOTER */
-    footer { text-align: center; padding: 48px 24px; border-top: 1px solid #141414; }
+    footer { position: relative; z-index: 1; text-align: center; padding: 48px 24px; border-top: 1px solid #141414; }
     footer a { color: #444; text-decoration: none; margin: 0 14px; font-size: 13px; transition: color 0.2s; }
     footer a:hover { color: #00E676; }
     footer p { color: #2A2A2A; font-size: 12px; margin-top: 20px; }
@@ -93,10 +102,14 @@
       .awards-grid { grid-template-columns: 1fr; }
       .cards-section { grid-template-columns: 1fr; }
       .nav-links { gap: 16px; }
+      .screenshot-item.center img { width: 200px; margin-top: 0; }
     }
   </style>
 </head>
 <body>
+
+<!-- FLOATING BALLS BACKGROUND -->
+<div class="balls-bg" id="ballsBg"></div>
 
 <nav>
   <span class="logo">NowBall</span>
@@ -108,7 +121,7 @@
 </nav>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero reveal">
   <h1>Find your <span>game.</span><br>Play now.</h1>
   <p>Join football and basketball pickup games near you. Connect with real players, track your stats, and never miss a game.</p>
   <div class="badges">
@@ -117,29 +130,44 @@
   </div>
 </section>
 
+<!-- SCREENSHOTS -->
+<section class="screenshots-section reveal">
+  <div class="screenshots-row">
+    <div class="screenshot-item">
+      <img src="screen2.png" alt="Build a Game" />
+    </div>
+    <div class="screenshot-item center">
+      <img src="screen1.png" alt="Home screen" />
+    </div>
+    <div class="screenshot-item">
+      <img src="screen3.png" alt="Game settings" />
+    </div>
+  </div>
+</section>
+
 <!-- CORE FEATURES -->
-<div class="section-title">
+<div class="section-title reveal">
   <h2>Everything you need to play</h2>
   <p>Built for pickup players who are serious about the game.</p>
 </div>
 
 <div class="features-grid">
-  <div class="feature">
+  <div class="feature reveal">
     <div class="icon">🏟️</div>
     <h3>Games Near You</h3>
     <p>Find open pickup games in your city and join with one tap. Football, basketball — wherever you are.</p>
   </div>
-  <div class="feature">
+  <div class="feature reveal">
     <div class="icon">👥</div>
     <h3>Real Players</h3>
     <p>Connect with verified players in your community. Build your crew and play together regularly.</p>
   </div>
-  <div class="feature">
+  <div class="feature reveal">
     <div class="icon">📊</div>
     <h3>Player Statistics</h3>
     <p>Track your games attended, MVP votes received, attendance streak, and reliability score — all in one place.</p>
   </div>
-  <div class="feature">
+  <div class="feature reveal">
     <div class="icon">🗳️</div>
     <h3>MVP Voting</h3>
     <p>After every game, players vote for the best performer. Earn your reputation one game at a time.</p>
@@ -149,35 +177,35 @@
 <!-- AWARDS -->
 <section class="awards-section">
   <div class="awards-inner">
-    <h2>Awards That Matter</h2>
-    <p class="sub">Pickup football, with FIFA-level recognition.</p>
+    <h2 class="reveal">Awards That Matter</h2>
+    <p class="sub reveal">Pickup football, with FIFA-level recognition.</p>
     <div class="awards-grid">
-      <div class="award-card">
+      <div class="award-card reveal">
         <div class="award-icon">⚽</div>
         <h4>Team of the Week</h4>
         <p>The best performers from each week's games, voted by the community.</p>
       </div>
-      <div class="award-card">
+      <div class="award-card reveal">
         <div class="award-icon">📅</div>
         <h4>Team of the Month</h4>
         <p>Monthly recognition for the most consistent and standout players.</p>
       </div>
-      <div class="award-card">
+      <div class="award-card reveal">
         <div class="award-icon">🏆</div>
         <h4>Team of the Season</h4>
         <p>The ultimate honor — the best players across an entire season of play.</p>
       </div>
-      <div class="award-card">
+      <div class="award-card reveal">
         <div class="award-icon">🎽</div>
         <h4>Coach of the Week</h4>
         <p>Recognizing the game organizers and leaders who make it all happen.</p>
       </div>
-      <div class="award-card">
+      <div class="award-card reveal">
         <div class="award-icon">📆</div>
         <h4>Coach of the Month</h4>
         <p>Monthly recognition for the most dedicated game organizers.</p>
       </div>
-      <div class="award-card">
+      <div class="award-card reveal">
         <div class="award-icon">👑</div>
         <h4>Coach of the Season</h4>
         <p>The community's most valued organizer across the full season.</p>
@@ -188,7 +216,7 @@
 
 <!-- CARDS -->
 <section>
-  <div class="cards-section">
+  <div class="cards-section reveal">
     <div class="cards-text">
       <h2>Yellow & Red Cards</h2>
       <p>Real accountability, pickup-style. Players who consistently no-show, play rough, or disrespect others get carded by the community.<br><br>
@@ -201,25 +229,8 @@
   </div>
 </section>
 
-<!-- SCREENSHOTS -->
-<section class="screenshots-section">
-  <h2>See it in action</h2>
-  <p>Clean, fast, and built for players.</p>
-  <div class="screenshots-row">
-    <div class="screenshot-item">
-      <img src="screen1.png" alt="Home screen" />
-    </div>
-    <div class="screenshot-item">
-      <img src="screen2.png" alt="Build a Game" />
-    </div>
-    <div class="screenshot-item">
-      <img src="screen3.png" alt="Game settings" />
-    </div>
-  </div>
-</section>
-
 <!-- COMING SOON: LEAGUES -->
-<section class="leagues-teaser">
+<section class="leagues-teaser reveal">
   <div class="soon-label">Coming Soon</div>
   <h2>Pickup is just the<br>beginning.<br><span>Leagues are next.</span></h2>
   <p>Organized seasons. Standings. Playoffs. Everything you love about competitive football — without the club commitments.</p>
@@ -238,6 +249,61 @@
   <a href="mailto:nowball.app@gmail.com">nowball.app@gmail.com</a>
   <p>© 2026 NowBall. All rights reserved.</p>
 </footer>
+
+<script>
+  // ── Scroll reveal ──────────────────────────────────────────
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ── Floating balls ─────────────────────────────────────────
+  const container = document.getElementById('ballsBg');
+  const ballTypes = [
+    // Football (soccer ball outline)
+    `<svg width="SIZE" height="SIZE" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="30" cy="30" r="27" stroke="#00E676" stroke-width="2"/>
+      <polygon points="30,10 38,22 28,30 22,22" stroke="#00E676" stroke-width="1.5" fill="none"/>
+      <line x1="30" y1="10" x2="30" y2="3" stroke="#00E676" stroke-width="1.5"/>
+      <line x1="38" y1="22" x2="46" y2="18" stroke="#00E676" stroke-width="1.5"/>
+      <line x1="28" y1="30" x2="24" y2="38" stroke="#00E676" stroke-width="1.5"/>
+      <line x1="22" y1="22" x2="14" y2="18" stroke="#00E676" stroke-width="1.5"/>
+      <line x1="24" y1="38" x2="32" y2="44" stroke="#00E676" stroke-width="1.5"/>
+      <line x1="32" y1="44" x2="40" y2="38" stroke="#00E676" stroke-width="1.5"/>
+      <line x1="40" y1="38" x2="46" y2="18" stroke="#00E676" stroke-width="1.5"/>
+      <line x1="14" y1="18" x2="10" y2="30" stroke="#00E676" stroke-width="1.5"/>
+    </svg>`,
+    // Basketball outline
+    `<svg width="SIZE" height="SIZE" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="30" cy="30" r="27" stroke="#00E676" stroke-width="2"/>
+      <path d="M30 3 Q42 15 42 30 Q42 45 30 57" stroke="#00E676" stroke-width="1.5" fill="none"/>
+      <path d="M30 3 Q18 15 18 30 Q18 45 30 57" stroke="#00E676" stroke-width="1.5" fill="none"/>
+      <line x1="3" y1="30" x2="57" y2="30" stroke="#00E676" stroke-width="1.5"/>
+    </svg>`
+  ];
+
+  function spawnBall() {
+    const size = 40 + Math.random() * 60;
+    const left = Math.random() * 100;
+    const duration = 12 + Math.random() * 16;
+    const delay = Math.random() * 8;
+    const type = ballTypes[Math.floor(Math.random() * ballTypes.length)];
+
+    const div = document.createElement('div');
+    div.className = 'ball';
+    div.style.left = left + 'vw';
+    div.style.animationDuration = duration + 's';
+    div.style.animationDelay = delay + 's';
+    div.innerHTML = type.replace(/SIZE/g, size);
+    container.appendChild(div);
+
+    setTimeout(() => div.remove(), (duration + delay) * 1000);
+  }
+
+  // Spawn initial batch
+  for (let i = 0; i < 8; i++) spawnBall();
+  setInterval(spawnBall, 2500);
+</script>
 
 </body>
 </html>
