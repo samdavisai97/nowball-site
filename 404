@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>NowBall</title>
+  <script>
+    const path = window.location.pathname;
+    const match = path.match(/^\/game\/(.+)$/);
+    if (match) {
+      const gameId = match[1];
+      window.location = 'nowball://game/' + gameId;
+      setTimeout(() => {
+        window.location = 'https://apps.apple.com/app/nowball/id6760980369';
+      }, 1500);
+    } else {
+      window.location = '/';
+    }
+  </script>
+</head>
+<body style="background:#0A0A0A;color:white;font-family:sans-serif;text-align:center;padding-top:40%">
+  <p>פותח את NowBall... ⚽</p>
+</body>
+</html>
