@@ -37,7 +37,8 @@
     .hero h1 span { color: #00E676; }
     .hero p { font-size: 18px; color: #777; max-width: 500px; margin: 0 auto 48px; line-height: 1.7; }
     .badges { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-    .badge { background: #141414; border: 1px solid #2A2A2A; border-radius: 14px; padding: 14px 28px; font-size: 15px; font-weight: 600; color: #bbb; }
+    .badge { background: #141414; border: 1px solid #2A2A2A; border-radius: 14px; padding: 14px 28px; font-size: 15px; font-weight: 600; color: #bbb; text-decoration: none; display: inline-block; }
+    a.badge:hover { border-color: #00E676; color: #fff; transition: border-color 0.2s, color 0.2s; }
 
     /* SCREENSHOTS */
     .screenshots-section { position: relative; z-index: 1; padding: 40px 24px 60px; }
@@ -126,7 +127,7 @@
   <p>Join football and basketball pickup games near you. Connect with real players, track your stats, and never miss a game.</p>
   <div class="badges">
     <div class="badge">🤖 Coming soon on Android</div>
-    <div class="badge">🍎 Coming soon on iOS</div>
+    <a class="badge" href="https://apps.apple.com/app/nowball/id6760980369" target="_blank" rel="noopener noreferrer">🍎 Download on the App Store</a>
   </div>
 </section>
 
