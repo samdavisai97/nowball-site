@@ -1,0 +1,11 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "BP6WNC8385.com.nowball.app",
+        "paths": ["/game/*"]
+      }
+    ]
+  }
+}
