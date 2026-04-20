@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="he" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NowBall — Find Your Game. Play Now.</title>
+  <title>NowBall — מצא את המשחק שלך. שחק יותר.</title>
   <link rel="icon" type="image/png" href="favicon.png" />
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0A0A0A; color: #E8E8E8; overflow-x: hidden; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Arial Hebrew', sans-serif; background: #0A0A0A; color: #E8E8E8; overflow-x: hidden; direction: rtl; }
 
     /* NAV */
     nav { background: #111; padding: 16px 40px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #1E1E1E; }
@@ -33,12 +33,14 @@
 
     /* HERO */
     .hero { position: relative; text-align: center; padding: 100px 24px 70px; z-index: 1; }
-    .hero h1 { font-size: clamp(36px, 6vw, 68px); font-weight: 900; color: #fff; margin-bottom: 20px; line-height: 1.1; }
+    .hero h1 { font-size: clamp(36px, 6vw, 68px); font-weight: 900; color: #fff; margin-bottom: 20px; line-height: 1.2; }
     .hero h1 span { color: #00E676; }
-    .hero p { font-size: 18px; color: #777; max-width: 500px; margin: 0 auto 48px; line-height: 1.7; }
+    .hero p { font-size: 18px; color: #777; max-width: 520px; margin: 0 auto 48px; line-height: 1.8; }
     .badges { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
     .badge { background: #141414; border: 1px solid #2A2A2A; border-radius: 14px; padding: 14px 28px; font-size: 15px; font-weight: 600; color: #bbb; text-decoration: none; display: inline-block; }
     a.badge:hover { border-color: #00E676; color: #fff; transition: border-color 0.2s, color 0.2s; }
+
+    /* PRIMARY CTA BADGE */
     a.badge-primary {
       background: #00E676;
       border: 1px solid #00E676;
@@ -72,7 +74,7 @@
     .section-title p { font-size: 16px; color: #666; max-width: 440px; margin: 0 auto; }
 
     /* FEATURES GRID */
-    .features-grid { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 860px; margin: 0 auto; padding: 0 24px 70px; }
+    .features-grid { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 860px; margin: 0 auto; padding: 0 24px 70px; }
     .feature { background: #111; border: 1px solid #1E1E1E; border-radius: 18px; padding: 32px; transition: border-color 0.3s, transform 0.3s; }
     .feature:hover { border-color: #00E676; transform: translateY(-4px); }
     .feature .icon { font-size: 38px; margin-bottom: 14px; }
@@ -141,11 +143,11 @@
 
 <!-- HERO -->
 <section class="hero reveal">
-  <h1>Find your <span>game.</span><br>Play now.</h1>
-  <p>Join football and basketball pickup games near you. Connect with real players, track your stats, and never miss a game.</p>
+  <h1>מצא את המשחק שלך.<br><span>שחק יותר.</span></h1>
+  <p>הצטרף למשחקי כדורגל וכדורסל בסביבתך. התחבר עם שחקנים, עקוב אחרי הסטטיסטיקות שלך, ואל תפספס אף משחק.</p>
   <div class="badges">
-    <a class="badge-primary" href="https://apps.apple.com/app/nowball/id6760980369" target="_blank" rel="noopener noreferrer">🍎 Download on the App Store</a>
-    <div class="badge">🤖 Coming soon on Android</div>
+    <a class="badge-primary" href="https://apps.apple.com/app/nowball/id6760980369" target="_blank" rel="noopener noreferrer">🍎 הורד באפ סטור</a>
+    <div class="badge">🤖 בקרוב על אנדרואיד</div>
   </div>
 </section>
 
@@ -153,81 +155,76 @@
 <section class="screenshots-section reveal">
   <div class="screenshots-row">
     <div class="screenshot-item">
-      <img src="screen2.png" alt="Build a Game" />
+      <img src="screen2.png" alt="יצירת משחק" />
     </div>
     <div class="screenshot-item center">
-      <img src="screen1.png" alt="Home screen" />
+      <img src="screen1.png" alt="מסך הבית" />
     </div>
     <div class="screenshot-item">
-      <img src="screen3.png" alt="Game settings" />
+      <img src="screen3.png" alt="הגדרות משחק" />
     </div>
   </div>
 </section>
 
 <!-- CORE FEATURES -->
 <div class="section-title reveal">
-  <h2>Everything you need to play</h2>
-  <p>Built for pickup players who are serious about the game.</p>
+  <h2>כל מה שצריך כדי לשחק</h2>
+  <p>אפליקציה לשחקני פיקאפ שרציניים לגבי המשחק.</p>
 </div>
 
 <div class="features-grid">
   <div class="feature reveal">
     <div class="icon">🏟️</div>
-    <h3>Games Near You</h3>
-    <p>Find open pickup games in your city and join with one tap. Football, basketball — wherever you are.</p>
-  </div>
-  <div class="feature reveal">
-    <div class="icon">👥</div>
-    <h3>Real Players</h3>
-    <p>Connect with verified players in your community. Build your crew and play together regularly.</p>
+    <h3>משחקים קרוב אליך</h3>
+    <p>מצא משחקי פיקאפ פתוחים בעיר שלך והצטרף בלחיצה אחת. כדורגל, כדורסל — בכל מקום שאתה נמצא.</p>
   </div>
   <div class="feature reveal">
     <div class="icon">📊</div>
-    <h3>Player Statistics</h3>
-    <p>Track your games attended, MVP votes received, attendance streak, and reliability score — all in one place.</p>
+    <h3>סטטיסטיקות שחקן</h3>
+    <p>עקוב אחרי המשחקים שלך, הצבעות MVP, רצף הנוכחות וציון האמינות — הכל במקום אחד.</p>
   </div>
   <div class="feature reveal">
     <div class="icon">🗳️</div>
-    <h3>MVP Voting</h3>
-    <p>After every game, players vote for the best performer. Earn your reputation one game at a time.</p>
+    <h3>הצבעת MVP</h3>
+    <p>בסיום כל משחק השחקנים מצביעים על השחקן הטוב ביותר. בנה את המוניטין שלך משחק אחר משחק.</p>
   </div>
 </div>
 
 <!-- AWARDS -->
 <section class="awards-section">
   <div class="awards-inner">
-    <h2 class="reveal">Awards That Matter</h2>
-    <p class="sub reveal">Pickup football, with FIFA-level recognition.</p>
+    <h2 class="reveal">פרסים</h2>
+    <p class="sub reveal">יש לך את מה שצריך כדי לזכות?</p>
     <div class="awards-grid">
       <div class="award-card reveal">
         <div class="award-icon">⚽</div>
-        <h4>Team of the Week</h4>
-        <p>The best performers from each week's games, voted by the community.</p>
+        <h4>קבוצת השבוע</h4>
+        <p>השחקנים הטובים ביותר ממשחקי השבוע, שנבחרו על ידי הקהילה.</p>
       </div>
       <div class="award-card reveal">
         <div class="award-icon">📅</div>
-        <h4>Team of the Month</h4>
-        <p>Monthly recognition for the most consistent and standout players.</p>
+        <h4>קבוצת החודש</h4>
+        <p>הכרה חודשית לשחקנים הכי עקביים ובולטים.</p>
       </div>
       <div class="award-card reveal">
         <div class="award-icon">🏆</div>
-        <h4>Team of the Season</h4>
-        <p>The ultimate honor — the best players across an entire season of play.</p>
+        <h4>קבוצת העונה</h4>
+        <p>הכבוד הגדול ביותר — השחקנים הטובים ביותר לאורך עונה שלמה.</p>
       </div>
       <div class="award-card reveal">
         <div class="award-icon">🎽</div>
-        <h4>Coach of the Week</h4>
-        <p>Recognizing the game organizers and leaders who make it all happen.</p>
+        <h4>מאמן השבוע</h4>
+        <p>הכרה למארגני המשחקים שגורמים לכל זה לקרות.</p>
       </div>
       <div class="award-card reveal">
         <div class="award-icon">📆</div>
-        <h4>Coach of the Month</h4>
-        <p>Monthly recognition for the most dedicated game organizers.</p>
+        <h4>מאמן החודש</h4>
+        <p>הכרה חודשית למארגני המשחקים הכי מ献身.</p>
       </div>
       <div class="award-card reveal">
         <div class="award-icon">👑</div>
-        <h4>Coach of the Season</h4>
-        <p>The community's most valued organizer across the full season.</p>
+        <h4>מאמן העונה</h4>
+        <p>המארגן הכי מוערך בקהילה לאורך עונה שלמה.</p>
       </div>
     </div>
   </div>
@@ -237,9 +234,9 @@
 <section>
   <div class="cards-section reveal">
     <div class="cards-text">
-      <h2>Yellow & Red Cards</h2>
-      <p>Real accountability, pickup-style. Players who consistently no-show, play rough, or disrespect others get carded by the community.<br><br>
-      Two yellows and you're out. Keep your record clean and your reputation solid.</p>
+      <h2>כרטיסים צהובים ואדומים</h2>
+      <p>אחריות אמיתית — שחקנים שלא מגיעים למשחקים שנרשמו אליהם, מתנהגים בצורה לא ספורטיבית או פוגעים בקהילה — מקבלים כרטיסים.<br><br>
+      שני צהובים ואתה בחוץ. שמור על הרשומה שלך נקייה ועל המוניטין שלך איתן.</p>
     </div>
     <div class="cards-visual">
       <div class="card-chip card-yellow">🟨</div>
@@ -250,15 +247,15 @@
 
 <!-- COMING SOON: LEAGUES -->
 <section class="leagues-teaser reveal">
-  <div class="soon-label">Coming Soon</div>
-  <h2>Pickup is just the<br>beginning.<br><span>Leagues are next.</span></h2>
-  <p>Organized seasons. Standings. Playoffs. Everything you love about competitive football — without the club commitments.</p>
+  <div class="soon-label">בקרוב</div>
+  <h2>הליגות בדרך.<br><span>עונות מאורגנות. דירוגים. פלייאוף.</span></h2>
+  <p>כל מה שאתה אוהב בכדורגל תחרותי — בלי התחייבות למועדון.</p>
   <div class="league-pills">
-    <div class="league-pill">🏆 Season Standings</div>
-    <div class="league-pill">📅 Scheduled Fixtures</div>
-    <div class="league-pill">⚖️ Divisions by Skill</div>
-    <div class="league-pill">🥇 Playoffs & Finals</div>
-    <div class="league-pill">📊 League Statistics</div>
+    <div class="league-pill">🏆 טבלת עמדות</div>
+    <div class="league-pill">📅 מחזורים קבועים</div>
+    <div class="league-pill">⚖️ חלוקה לפי רמה</div>
+    <div class="league-pill">🥇 פלייאוף וגמר</div>
+    <div class="league-pill">📊 סטטיסטיקות ליגה</div>
   </div>
 </section>
 
@@ -266,7 +263,7 @@
   <a href="privacy.html">Privacy Policy</a>
   <a href="terms.html">Terms of Service</a>
   <a href="mailto:nowball.app@gmail.com">nowball.app@gmail.com</a>
-  <p>© 2026 NowBall. All rights reserved.</p>
+  <p>© 2026 NowBall. כל הזכויות שמורות.</p>
 </footer>
 
 <script>
@@ -279,7 +276,6 @@
   // ── Floating balls ─────────────────────────────────────────
   const container = document.getElementById('ballsBg');
   const ballTypes = [
-    // Football (soccer ball outline)
     `<svg width="SIZE" height="SIZE" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
       <circle cx="30" cy="30" r="27" stroke="#00E676" stroke-width="2"/>
       <polygon points="30,10 38,22 28,30 22,22" stroke="#00E676" stroke-width="1.5" fill="none"/>
@@ -292,7 +288,6 @@
       <line x1="40" y1="38" x2="46" y2="18" stroke="#00E676" stroke-width="1.5"/>
       <line x1="14" y1="18" x2="10" y2="30" stroke="#00E676" stroke-width="1.5"/>
     </svg>`,
-    // Basketball outline
     `<svg width="SIZE" height="SIZE" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
       <circle cx="30" cy="30" r="27" stroke="#00E676" stroke-width="2"/>
       <path d="M30 3 Q42 15 42 30 Q42 45 30 57" stroke="#00E676" stroke-width="1.5" fill="none"/>
@@ -319,7 +314,6 @@
     setTimeout(() => div.remove(), (duration + delay) * 1000);
   }
 
-  // Spawn initial batch
   for (let i = 0; i < 8; i++) spawnBall();
   setInterval(spawnBall, 2500);
 </script>
