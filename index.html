@@ -124,6 +124,17 @@
       .screenshot-item.center img { width: 200px; margin-top: 0; }
     }
   </style>
+  <!-- Facebook Pixel -->
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '2060288571218554');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2060288571218554&ev=PageView&noscript=1"/></noscript>
 </head>
 <body>
 
@@ -144,7 +155,7 @@
   <h1>Find your <span>game.</span><br>Play now.</h1>
   <p>Join football and basketball pickup games near you. Connect with real players, track your stats, and never miss a game.</p>
   <div class="badges">
-    <a class="badge-primary" href="https://apps.apple.com/app/nowball/id6760980369" target="_blank" rel="noopener noreferrer">🍎 Download on the App Store</a>
+    <a class="badge-primary" href="https://apps.apple.com/app/nowball/id6760980369" target="_blank" rel="noopener noreferrer" onclick="fbq('trackCustom','Download')">🍎 Download on the App Store</a>
     <div class="badge">🤖 Coming soon on Android</div>
   </div>
 </section>
