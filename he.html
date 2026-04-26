@@ -56,7 +56,6 @@
     /* HERO PHONE */
     .hero-phone {
       position: absolute;
-      left: 5%;
       top: 50%;
       transform: translateY(-50%) rotate(8deg);
       width: 120px;
@@ -65,8 +64,12 @@
       pointer-events: none;
       z-index: 0;
     }
+    .hero-phone-left { left: 5%; transform: translateY(-50%) rotate(8deg); }
+    .hero-phone-right { right: 5%; transform: translateY(-50%) rotate(-8deg); }
     @media (max-width: 600px) {
-      .hero-phone { width: 80px; left: 2%; }
+      .hero-phone { width: 70px; }
+      .hero-phone-left { left: 1%; }
+      .hero-phone-right { right: 1%; }
     }
 
     /* HERO */
@@ -192,10 +195,11 @@
 
 <!-- HERO -->
 <section class="hero reveal">
-  <img class="hero-phone" src="screen1.png" alt="" />
+  <img class="hero-phone hero-phone-left" src="screen1.png" alt="" />
+  <img class="hero-phone hero-phone-right" src="screen2.png" alt="" />
   <div class="growing-badge">האפליקציה הצומחת בישראל</div>
   <h1>מצא את המשחק שלך.<br><span>שחק יותר.</span></h1>
-  <p>הצטרף למשחקי כדורגל וכדורסל בסביבתך.<br>קבל התראות על משחקים, עקוב אחרי הסטטיסטיקות שלך.<br>אל תפספס אף משחק.</p>
+  <p>הצטרף למשחקי כדורגל וכדורסל בסביבתך.<br>קבל התראות על משחקים.<br>עקוב אחרי הסטטיסטיקות שלך.<br>אל תפספס אף משחק.</p>
   <div class="badges">
     <a class="badge-primary" href="https://apps.apple.com/app/nowball/id6760980369" target="_blank" rel="noopener noreferrer" onclick="fbq('trackCustom','Download')">🍎 הורד באפ סטור</a>
     <div class="badge">🤖 בקרוב על אנדרואיד</div>
