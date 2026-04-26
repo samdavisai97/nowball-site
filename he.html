@@ -33,6 +33,26 @@
     .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
+    /* GROWING BADGE */
+    .growing-badge {
+      position: absolute;
+      top: 60px;
+      left: 40px;
+      background: #111;
+      border: 1px solid #00E676;
+      border-radius: 10px;
+      padding: 8px 14px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #00E676;
+      transform: rotate(-8deg);
+      white-space: nowrap;
+      z-index: 2;
+    }
+    @media (max-width: 600px) {
+      .growing-badge { top: 20px; left: 12px; font-size: 11px; padding: 6px 10px; }
+    }
+
     /* HERO */
     .hero { position: relative; text-align: center; padding: 100px 24px 70px; z-index: 1; }
     .hero h1 { font-size: clamp(36px, 6vw, 68px); font-weight: 900; color: #fff; margin-bottom: 20px; line-height: 1.2; }
@@ -156,8 +176,8 @@
 
 <!-- HERO -->
 <section class="hero reveal">
+  <div class="growing-badge">האפליקציה הצומחת בישראל 🇮🇱</div>
   <h1>מצא את המשחק שלך.<br><span>שחק יותר.</span></h1>
-  <p style="font-size:15px; color:#00E676; margin-bottom:8px;">האפליקציה הצומחת בישראל 🇮🇱</p>
   <p>הצטרף למשחקי כדורגל וכדורסל בסביבתך. התחבר עם שחקנים, קבל התראות על משחקים, עקוב אחרי הסטטיסטיקות שלך, ואל תפספס אף משחק.</p>
   <div class="badges">
     <a class="badge-primary" href="https://apps.apple.com/app/nowball/id6760980369" target="_blank" rel="noopener noreferrer" onclick="fbq('trackCustom','Download')">🍎 הורד באפ סטור</a>
